@@ -1,6 +1,8 @@
 package io.zipcoder.polymorphism;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -26,10 +28,13 @@ public class MainApplication {
     public static ArrayList<Pet> petList(Integer amountOfPets){
         Pet pet = new Pet(null);
         for(int i = 0; i < amountOfPets; i++){
-            getPetName();
+            pet.setName(getPetNameInput("What is your pets name? Enter it now!!"));
             userPets.add(pet);
 
+            System.out.println(userPets.get(i).getName());
+            System.out.println(userPets.get(i).speak());
         }
+
         return userPets;
     }
 
@@ -41,9 +46,12 @@ public class MainApplication {
         System.out.println("What is your pets name? Enter it now!!");
         return scanner.nextLine();
     }
-    public static String getPetType(){
-        System.out.println("What is your pets type? Enter it now!!");
-        return scanner.nextLine();
+
+    public static String getPetNameInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt);
+        String userInput = scanner.nextLine();
+        return userInput;
     }
 
 }
